@@ -3,19 +3,21 @@ import serial
 import keyboard  # using module keyboard
 from serial.tools import list_ports
 from datetime import datetime
+PORT_NO = 'COM3'
 
 if __name__ == '__main__':
     ports = serial.tools.list_ports.comports()
     for port, desc, hwid in sorted(ports):
-            print("{}: {} [{}]".format(port, desc, hwid))
+            print("Found open {}: {} [{}]".format(port, desc, hwid))
+            PORT_NO=port
     try:
-        ser = serial.Serial('COM3', 9600, timeout=0)
+        ser = serial.Serial(PORT_NO, 9600, timeout=0)
         last_datetime = datetime.now()
         #wait for ready
         read =''
         while read == '':
             read = ser.readline()
-        print(read)
+            #print(read)
         tex = ''
 
         while tex != 'q':
