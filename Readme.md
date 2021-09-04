@@ -1,0 +1,1 @@
+Simple python script that sends time string (HH:MM:SS) to Arduino via COM-port
